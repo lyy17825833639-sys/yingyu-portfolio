@@ -1,0 +1,123 @@
+.curriculum {
+  padding-top: 0;
+  padding-bottom: clamp(100px, 10.8vw, 172px);
+}
+
+.curriculum-panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(0, 1fr);
+  align-items: center;
+  min-height: 650px;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(203,216,227, .18);
+  border-radius: 40px;
+  background:
+    radial-gradient(ellipse 53% 70% at 75% 48%, rgba(72,126,145, .19), transparent 78%),
+    linear-gradient(125deg, #0b1420, #0d1c28 57%, #101b29);
+  box-shadow: 0 35px 85px rgba(47,57,66, .15), inset 0 1px rgba(255,255,255,.13);
+}
+
+.curriculum-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent 0 90px, rgba(192,207,220, .025) 91px 92px);
+}
+
+.curriculum-copy {
+  position: relative;
+  z-index: 1;
+  padding: 70px 0 70px clamp(42px, 5.3vw, 80px);
+  color: #edf1f4;
+}
+
+.curriculum-copy .eyebrow {
+  color: #aebac4;
+  letter-spacing: .17em;
+  line-height: 1.6;
+}
+
+.curriculum-copy h2 {
+  margin: 27px 0 24px;
+  font-size: clamp(42px, 4.3vw, 68px);
+  font-weight: 550;
+  line-height: 1.17;
+  letter-spacing: -.065em;
+}
+
+.curriculum-copy h2 em {
+  color: #b6c8d0;
+  font-style: normal;
+}
+
+.curriculum-copy > p:not(.eyebrow, .sr-only) {
+  max-width: 420px;
+  margin: 0;
+  color: #adb7bf;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.curriculum-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 56px;
+  color: #afbac3;
+  font-size: 11px;
+  letter-spacing: .06em;
+}
+
+.curriculum-hint span { color: #d2bfe7; font-size: 18px; }
+
+.course-orb-visual {
+  position: relative;
+  width: 100%;
+  height: 650px;
+  min-width: 0;
+  touch-action: pan-y;
+}
+
+.course-orb-canvas { display: block; width: 100%; height: 100%; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 950px) {
+  .curriculum-panel { grid-template-columns: 1fr; }
+  .curriculum-copy { padding: 52px 52px 0; }
+  .curriculum-copy h2 { font-size: clamp(42px, 6vw, 60px); }
+  .curriculum-hint { margin-top: 23px; }
+  .course-orb-visual { height: min(76vw, 620px); }
+}
+
+@media (max-width: 760px) {
+  .curriculum { padding-bottom: 88px; }
+  .curriculum-panel { border-radius: 30px; }
+  .curriculum-copy { padding: 42px 34px 0; }
+  .curriculum-copy h2 { font-size: clamp(39px, 8vw, 56px); }
+  .course-orb-visual { height: min(88vw, 530px); }
+}
+
+@media (max-width: 480px) {
+  .curriculum-panel { border-radius: 24px; }
+  .curriculum-copy { padding: 34px 24px 0; }
+  .curriculum-copy .eyebrow { font-size: 9px; }
+  .curriculum-copy h2 { margin: 19px 0 17px; font-size: clamp(36px, 9vw, 43px); }
+  .curriculum-copy > p:not(.eyebrow, .sr-only) { font-size: 13px; }
+  .curriculum-hint { margin-top: 19px; font-size: 10px; }
+  .course-orb-visual { height: min(92vw, 440px); }
+}

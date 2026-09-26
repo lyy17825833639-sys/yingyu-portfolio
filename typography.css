@@ -1,0 +1,72 @@
+/* Shared type scale for the portfolio sections. The two opening screens keep
+   their larger display headlines; all content sections use this hierarchy. */
+:root {
+  --type-section-title: clamp(42px, 4.5vw, 64px);
+  --type-section-copy: 15px;
+  --type-card-title: 28px;
+  --type-card-copy: 14px;
+  --type-label: 11px;
+}
+
+.portfolio-page .section-heading h2,
+.portfolio-page .curriculum-copy h2,
+.portfolio-page .contact h2 {
+  font-size: var(--type-section-title);
+  line-height: 1.17;
+  letter-spacing: -.065em;
+  font-weight: 560;
+}
+
+.portfolio-page .section-heading > p,
+.portfolio-page .about-copy > p:not(.mini-label),
+.portfolio-page .curriculum-copy > p:not(.eyebrow, .sr-only),
+.portfolio-page .contact-description {
+  font-size: var(--type-section-copy);
+  line-height: 1.85;
+}
+
+.portfolio-page .about-copy h3,
+.portfolio-page .project-info h3,
+.portfolio-page .strength-card h3 {
+  font-size: var(--type-card-title);
+  font-weight: 560;
+}
+
+.portfolio-page .honor-main h3 {
+  font-size: clamp(20px, 1.85vw, 24px);
+  font-weight: 560;
+}
+
+.portfolio-page .project-info p,
+.portfolio-page .project-highlights li,
+.portfolio-page .strength-card p {
+  font-size: var(--type-card-copy);
+  line-height: 1.75;
+}
+
+.portfolio-page .section-kicker,
+.portfolio-page .curriculum-copy .eyebrow,
+.portfolio-page .mini-label,
+.portfolio-page .project-type,
+.portfolio-page .honor-category,
+.portfolio-page .contact-top > span {
+  font-size: var(--type-label);
+}
+
+@media (max-width: 760px) {
+  :root {
+    --type-section-title: clamp(38px, 8vw, 54px);
+    --type-section-copy: 14px;
+    --type-card-title: 25px;
+    --type-label: 10px;
+  }
+  .portfolio-page .honor-main h3 { font-size: 20px; }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --type-section-title: clamp(36px, 9vw, 42px);
+    --type-card-title: 22px;
+  }
+  .portfolio-page .honor-main h3 { font-size: 18px; }
+}
