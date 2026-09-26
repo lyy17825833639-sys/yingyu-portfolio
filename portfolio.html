@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="project-cards.css">
   <link rel="stylesheet" href="visual-refresh.css">
   <link rel="stylesheet" href="project-map.css">
+  <link rel="stylesheet" href="portfolio-v2.css">
 </head>
 <body class="portfolio-page">
   <a class="skip-link" href="#main">跳到主要内容</a>
@@ -37,11 +38,14 @@
         <div class="hero-grid"></div>
         <div class="hero-glow"></div>
         <div class="hero-horizon"></div>
+        <div class="hero-cursor-glow" id="hero-cursor-glow"></div>
+        <div class="hero-particles" id="hero-particles"></div>
       </div>
       <div class="wrap hero-wrap">
         <div class="hero-copy">
           <p class="eyebrow hero-eyebrow"><span class="live-dot"></span> 中山大学管理学院 · 工商管理在读</p>
           <h1 id="hero-title"><span class="hero-title-ai">AI</span><span class="hero-title-plus">+</span><span class="hero-title-business">商科</span></h1>
+          <p class="hero-type" aria-hidden="true"><span class="hero-type-text" id="hero-type-text"></span><span class="hero-type-caret"></span></p>
           <p class="hero-lede">我是吕颖瑜，以工商管理的系统训练为基础，结合 AI 工具与跨学科视角研究真实问题。从风电出海策略、产业数字化案例到生成式 AI 医患互动研究，我习惯先核对资料与数据、拆解关键问题，再用策略模型、研究设计或产品原型推动验证。</p>
           <div class="hero-actions">
             <a class="button button-lime hero-action" href="#projects">探索作品</a>
@@ -93,33 +97,68 @@
             </div>
           </div>
         </div>
-        <div class="hero-bottom"><span>00 / INTRODUCTION</span><span>向下探索</span></div>
+        <div class="hero-bottom"><span>向下探索</span></div>
       </div>
     </section>
 
     <section class="about section-pad" id="about" aria-labelledby="about-title">
       <div class="wrap">
-        <div class="section-heading about-heading"><div><p class="eyebrow section-kicker"><span>01 /</span> ABOUT ME</p><h2 id="about-title">以商业为底，<br><em>向交叉处探索。</em></h2></div><p>从商业分析出发，理解技术与人的关系，并把跨学科想法推进为可讨论、可验证的方案。</p></div>
+        <div class="section-heading about-heading"><div><p class="eyebrow section-kicker"><span>01 /</span> ABOUT ME</p><h2 id="about-title">以商业为底，<br><em>向交叉处探索</em></h2></div><p>从商业分析出发，理解技术与人的关系，并把跨学科想法推进为可讨论、可验证的方案。</p></div>
         <div class="about-layout">
           <div class="portrait-panel"><img src="assets/yingyu-portrait.webp" alt="吕颖瑜的人像" width="900" height="1100" loading="lazy"><div class="portrait-caption"><span>YINGYU LV</span><span>BASED IN GUANGZHOU</span></div></div>
           <div class="about-copy">
             <p class="mini-label">PROFILE / 2026</p>
-            <h3>你好，我是吕颖瑜。</h3>
+            <h3>你好，我是吕颖瑜</h3>
             <p>我是一名具有跨学科视角的商科生，具备扎实的工商管理专业基础和较强的 AI 学习与应用能力。商科训练帮助我从市场、用户与组织等角度分析问题，AI 工具则拓展了我的研究与表达方式。</p>
             <p>我习惯主动学习，注重信息搜集、结构化商业分析与书面表达。面对复杂问题，会先梳理事实和关键变量，形成清晰的研究思路；在执行中保持细致负责，重视数据核验与成果质量，并根据不同主题调整研究方法。</p>
             <div class="about-stats" aria-label="学业数据">
-              <div><strong>4/106</strong><span>综合测评排名</span></div>
-              <div><strong>6/106</strong><span>专业绩点排名</span></div>
-              <div><strong>520<span>分</span></strong><span>大学英语六级成绩</span></div>
+              <div><strong><span class="count" data-count="4">4</span><span class="stat-den">/106</span></strong><span>综合测评排名</span></div>
+              <div><strong><span class="count" data-count="6">6</span><span class="stat-den">/106</span></strong><span>专业绩点排名</span></div>
+              <div><strong><span class="count" data-count="3.83" data-decimals="2">3.83</span><span class="stat-den">/4.00</span></strong><span>专业绩点 GPA</span></div>
+              <div><strong><span class="count" data-count="520">520</span><span>分</span></strong><span>大学英语六级</span></div>
             </div>
             <div class="about-contact"><span>保持联系</span><a href="mailto:1479271243@qq.com">1479271243@qq.com</a><a href="tel:+8617825833639">+86 178 2583 3639</a></div>
           </div>
         </div>
         <div class="experience-strip" aria-label="经历速览">
           <div class="experience-title"><span class="mini-label">EXPERIENCE</span><strong>经历速览</strong></div>
-          <div class="experience-item"><time>2024.09 — 至今</time><strong>中山大学管理学院</strong><span>工商管理专业 · GPA 3.83 / 4.00</span></div>
-          <div class="experience-item"><time>2026.09 — 至今</time><strong>国联民生证券股份有限公司</strong><span>研究部实习生 · 公司与行业资料梳理、财务数据及研究框架支持</span></div>
-          <div class="experience-item"><time>2025.12 — 2026.12</time><strong>RAE火箭计划科研助理</strong><span>中山大学管理学院 · 创业与战略管理文献跟踪</span></div>
+          <div class="experience-item"><time>2024.09 — 至今</time><strong>中山大学管理学院</strong><span>工商管理专业（A+ 学科）· GPA 3.83 / 4.00</span></div>
+          <div class="experience-item"><time>2026.09 — 至今</time><strong>国联民生证券研究所</strong><span>研究部实习生 · 跟踪零售及跨境电商行业与重点上市公司，整理财务数据、公告、行业资料及深度研报</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills section-pad" id="skills" aria-labelledby="skills-title">
+      <div class="wrap">
+        <div class="section-heading skills-heading">
+          <div><p class="eyebrow section-kicker"><span>SKILLS /</span> CAPABILITY</p><h2 id="skills-title">能力与技能</h2></div>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-group">
+            <h3>分析与建模</h3>
+            <ul>
+              <li>经济模型测算</li>
+              <li>财务数据分析</li>
+              <li>PEST / 商业模式画布</li>
+              <li>业务拆分与行业研究框架</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>研究与写作</h3>
+            <ul>
+              <li>文献检索与综述（47 篇 / 5 份政策）</li>
+              <li>研究设计 · 访谈提纲与问卷</li>
+              <li>中英文报告与 15 分钟路演</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>办公与语言</h3>
+            <ul>
+              <li>Word / Excel / PowerPoint</li>
+              <li>CET-4 · CET-6</li>
+              <li>英文文献检索</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -127,7 +166,7 @@
     <section class="journey section-pad" id="journey" aria-labelledby="journey-title">
       <div class="wrap">
         <div class="section-heading journey-heading">
-          <div><p class="eyebrow section-kicker"><span>02 /</span> EDUCATION ROUTE</p><h2 id="journey-title">升学路径<span>。</span></h2></div>
+          <div><p class="eyebrow section-kicker"><span>02 /</span> EDUCATION ROUTE</p><h2 id="journey-title">升学路径</h2></div>
           <p>移动指针浏览路径，或点选学校阶段。</p>
         </div>
         <div class="education-map" aria-label="从小学到大学的升学路径图">
@@ -160,7 +199,7 @@
         <div class="curriculum-panel">
           <div class="curriculum-copy">
             <p class="eyebrow">03 / ACADEMIC FOUNDATION</p>
-            <h2 id="curriculum-title">以扎实专业基础，<br><em>建立商业视角。</em></h2>
+            <h2 id="curriculum-title">以扎实专业基础，<br><em>建立商业视角</em></h2>
             <p>多门专业课程荣获A/A+等级</p>
             <span class="curriculum-hint">左右移动或轻扫，绕轴浏览课程</span>
             <p class="sr-only">核心专业课程：宏观经济学、微观经济学、组织行为学、营销学原理、消费者行为学、概率与统计、计量经济学、高等数学、线性代数、管理学原理、商法、财务管理、人工智能、服务管理、运作管理、创业基础、社会科学研究方法导论、人工智能与管理、商业伦理、会计学原理、逻辑导论。</p>
@@ -172,43 +211,51 @@
 
     <section class="projects section-pad" id="projects" aria-labelledby="projects-title">
       <div class="wrap">
-        <div class="section-heading projects-heading"><div><p class="eyebrow section-kicker"><span>04 /</span> SELECTED WORK</p><h2 id="projects-title">从问题出发，<br><em>把想法推进到验证。</em></h2></div><p>从国际市场策略与产业案例的商业分析，到生成式 AI 研究与产品原型，记录我如何逐步推进真实问题。</p></div>
-        <div class="project-list">
-          <div class="project-carousel-shell">
-            <div class="project-carousel-toolbar">
-              <span>PROJECT GALLERY <i>·</i> 横向浏览，点击查看项目详情</span>
-              <div class="project-carousel-controls" aria-label="项目画廊控制">
-                <button type="button" class="project-carousel-prev" aria-label="查看上一个项目">←</button>
-                <button type="button" class="project-carousel-next" aria-label="查看下一个项目">→</button>
-              </div>
+        <div class="section-heading projects-heading"><div><p class="eyebrow section-kicker"><span>04 /</span> SELECTED WORK</p><h2 id="projects-title">从问题出发，<br><em>把想法推进到验证</em></h2></div><p>从国际市场策略与产业案例的商业分析，到生成式 AI 研究与产品原型，记录我如何逐步推进真实问题。</p></div>
+        <div class="ring-gallery" id="ring-gallery">
+          <div class="ring-gallery-stage" id="ring-stage" role="region" aria-roledescription="3D 环绕画廊" aria-label="精选项目经历，可拖动旋转或使用左右按钮浏览">
+            <span class="ring-orbit ring-orbit-1" aria-hidden="true"></span>
+            <span class="ring-orbit ring-orbit-2" aria-hidden="true"></span>
+            <span class="ring-core" aria-hidden="true"></span>
+            <div class="ring-track" id="ring-track">
+              <article class="ring-card ring-card-strategy" id="project-strategy">
+                <button class="ring-card-trigger" type="button" data-project="strategy" aria-haspopup="dialog" aria-controls="project-dialog" aria-label="查看明阳智能出海策略项目详情">
+                  <span class="ring-card-visual" aria-hidden="true"><span class="ring-card-index">01 / STRATEGY</span><span class="ring-card-art">04 <i>MARKETS</i></span><span class="ring-card-open">查看详情</span></span>
+                  <span class="ring-card-body"><strong>明阳智能出海策略</strong><span>战略分析 · 商业研究</span><em>2026</em></span>
+                </button>
+              </article>
+              <article class="ring-card ring-card-case" id="project-case">
+                <button class="ring-card-trigger" type="button" data-project="case" aria-haspopup="dialog" aria-controls="project-dialog" aria-label="查看致景科技案例分析项目详情">
+                  <span class="ring-card-visual" aria-hidden="true"><span class="ring-card-index">02 / CASE STUDY</span><span class="ring-card-art">DATA <i>→</i> VALUE</span><span class="ring-card-open">查看详情</span></span>
+                  <span class="ring-card-body"><strong>致景科技案例分析</strong><span>案例分析 · 团队负责人</span><em>2025</em></span>
+                </button>
+              </article>
+              <article class="ring-card ring-card-research" id="project-research">
+                <button class="ring-card-trigger" type="button" data-project="research" aria-haspopup="dialog" aria-controls="project-dialog" aria-label="查看 AI 与医患互动研究项目详情">
+                  <span class="ring-card-visual" aria-hidden="true"><span class="ring-card-index">03 / RESEARCH</span><span class="ring-card-art">AI <i>↔</i> 人</span><span class="ring-card-open">查看详情</span></span>
+                  <span class="ring-card-body"><strong>AI 与医患互动</strong><span>生成式 AI · 用户研究</span><em>2025—2026</em></span>
+                </button>
+              </article>
+              <article class="ring-card ring-card-moodbox" id="project-moodbox">
+                <button class="ring-card-trigger" type="button" data-project="moodbox" aria-haspopup="dialog" aria-controls="project-dialog" aria-label="查看 MoodBox 项目详情">
+                  <span class="ring-card-visual" aria-hidden="true"><span class="ring-card-index">04 / PRODUCT</span><span class="ring-card-art">MoodBox<i>.</i></span><span class="ring-card-open">查看详情</span></span>
+                  <span class="ring-card-body"><strong>MoodBox</strong><span>产品概念 · 小程序 MVP</span><em>2026</em></span>
+                </button>
+              </article>
+              <article class="ring-card ring-card-rae" id="project-rae">
+                <button class="ring-card-trigger" type="button" data-project="rae" aria-haspopup="dialog" aria-controls="project-dialog" aria-label="查看 RAE 火箭计划科研助理项目详情">
+                  <span class="ring-card-visual" aria-hidden="true"><span class="ring-card-index">05 / RESEARCH</span><span class="ring-card-art">RAE <i>LAB</i></span><span class="ring-card-open">查看详情</span></span>
+                  <span class="ring-card-body"><strong>RAE 火箭计划科研助理</strong><span>科研助理 · 文献综述</span><em>2025—2026</em></span>
+                </button>
+              </article>
             </div>
-            <div class="project-carousel-viewport" tabindex="0" role="region" aria-roledescription="轮播画廊" aria-label="精选项目经历，可横向拖动或使用左右方向键浏览">
-              <div class="project-compact-grid">
-                <article class="project-compact-card project-compact-strategy" id="project-strategy">
-                  <button class="project-compact-trigger" type="button" data-project="strategy" aria-haspopup="dialog" aria-controls="project-dialog" aria-label="查看明阳智能出海策略项目详情">
-                    <span class="project-compact-visual" aria-hidden="true"><span class="project-compact-index">01 / STRATEGY</span><span class="project-compact-art">04 <i>MARKETS</i></span><span class="project-compact-open">查看详情</span></span>
-                    <span class="project-compact-body"><strong>明阳智能出海策略</strong><span>战略分析 · 商业研究</span><span>2026</span></span>
-                  </button>
-                </article>
-                <article class="project-compact-card project-compact-case" id="project-case">
-                  <button class="project-compact-trigger" type="button" data-project="case" aria-haspopup="dialog" aria-controls="project-dialog" aria-label="查看致景科技案例分析项目详情">
-                    <span class="project-compact-visual" aria-hidden="true"><span class="project-compact-index">02 / CASE STUDY</span><span class="project-compact-art">DATA <i>→</i> VALUE</span><span class="project-compact-open">查看详情</span></span>
-                    <span class="project-compact-body"><strong>致景科技案例分析</strong><span>案例分析 · 团队负责人</span><span>2025</span></span>
-                  </button>
-                </article>
-                <article class="project-compact-card project-compact-research" id="project-research">
-                  <button class="project-compact-trigger" type="button" data-project="research" aria-haspopup="dialog" aria-controls="project-dialog" aria-label="查看 AI 与医患互动研究项目详情">
-                    <span class="project-compact-visual" aria-hidden="true"><span class="project-compact-index">03 / RESEARCH</span><span class="project-compact-art">AI <i>↔</i> 人</span><span class="project-compact-open">查看详情</span></span>
-                    <span class="project-compact-body"><strong>AI 与医患互动</strong><span>生成式 AI · 用户研究</span><span>2025—2026</span></span>
-                  </button>
-                </article>
-                <article class="project-compact-card project-compact-moodbox" id="project-moodbox">
-                  <button class="project-compact-trigger" type="button" data-project="moodbox" aria-haspopup="dialog" aria-controls="project-dialog" aria-label="查看 MoodBox 项目详情">
-                    <span class="project-compact-visual" aria-hidden="true"><video src="assets/moodbox-demo.mp4" poster="assets/moodbox-poster.svg" muted loop playsinline preload="none" tabindex="-1"></video><span class="project-compact-video-shade"></span><span class="project-compact-index">04 / PRODUCT</span><span class="project-compact-art">MoodBox<span>.</span></span><span class="project-compact-open">查看详情</span></span>
-                    <span class="project-compact-body"><strong>MoodBox</strong><span>产品概念 · 小程序 MVP</span><span>2026</span></span>
-                  </button>
-                </article>
-              </div>
+            <span class="ring-hint" aria-hidden="true">← 拖动旋转 · 点击卡片查看详情 →</span>
+          </div>
+          <div class="ring-gallery-bar">
+            <span>PROJECT GALLERY <i>·</i> 3D 环绕旋转，点击卡片查看项目详情</span>
+            <div class="ring-nav" aria-label="项目画廊控制">
+              <button type="button" class="ring-prev" aria-label="查看上一个项目">←</button>
+              <button type="button" class="ring-next" aria-label="查看下一个项目">→</button>
             </div>
           </div>
         </div>
@@ -218,28 +265,64 @@
     <section class="honors section-pad" id="honors" aria-labelledby="honors-title">
       <div class="wrap">
         <div class="section-heading honors-heading">
-          <div><p class="eyebrow section-kicker"><span>05 /</span> RECOGNITION</p><h2 id="honors-title">个人荣誉<span>与认可。</span></h2></div>
-          <p>来自学习、竞赛与项目实践的阶段性记录。项目奖项已注明团队归属。</p>
+          <div><p class="eyebrow section-kicker"><span>05 /</span> RECOGNITION</p><h2 id="honors-title">个人荣誉<span>与认可</span></h2></div>
         </div>
         <div class="honors-list">
-          <article class="honor-item"><span class="honor-number">01</span><div class="honor-main"><span class="honor-category">学业荣誉 / 个人</span><h3>中山大学优秀学生奖学金</h3></div><span class="honor-symbol" aria-hidden="true">✳</span></article>
-          <article class="honor-item"><span class="honor-number">02</span><div class="honor-main"><span class="honor-category">学科竞赛 / 个人</span><h3>中山大学专项奖学金<span>（学科竞赛奖）</span></h3></div><span class="honor-symbol" aria-hidden="true">✳</span></article>
-          <article class="honor-item"><span class="honor-number">03</span><div class="honor-main"><span class="honor-category">语言竞赛 / 个人</span><h3>2025年“外研社·国才杯”“理解当代中国”全国大学生外语能力大赛英语组笔译赛项·中山大学校级决赛一等奖</h3></div><span class="honor-symbol" aria-hidden="true">✳</span></article>
-          <article class="honor-item"><span class="honor-number">04</span><div class="honor-main"><span class="honor-category">案例分析 / 团队</span><h3>第三届“岭南杯”中国经济发展案例分析大赛校级赛“优秀案例”</h3></div><span class="honor-symbol" aria-hidden="true">✳</span></article>
-          <article class="honor-item"><span class="honor-number">05</span><div class="honor-main"><span class="honor-category">商业策略 / 团队</span><h3>2026年英华营·创新创业——中山大学管理学院大湾区全球双创实训营暨第三届全球领导力项目“最佳市场潜力奖”</h3></div><span class="honor-symbol" aria-hidden="true">✳</span></article>
-          <article class="honor-item"><span class="honor-number">06</span><div class="honor-main"><span class="honor-category">项目实践 / 个人</span><h3>2026年英华营·创新创业——中山大学管理学院大湾区全球双创实训营暨第三届全球领导力项目“优秀营员奖”</h3></div><span class="honor-symbol" aria-hidden="true">✳</span></article>
-          <article class="honor-item"><span class="honor-number">07</span><div class="honor-main"><span class="honor-category">志愿服务 / 个人</span><h3>中山大学寒假招生宣传活动“优秀志愿者”</h3></div><span class="honor-symbol" aria-hidden="true">✳</span></article>
-          <article class="honor-item"><span class="honor-number">08</span><div class="honor-main"><span class="honor-category">体育竞赛 / 团队</span><h3>2024年中山大学校运会女子4×100米接力决赛第六名</h3></div><span class="honor-symbol" aria-hidden="true">✳</span></article>
+          <article class="honor-item"><span class="honor-number">01</span><div class="honor-main"><span class="honor-category">学业荣誉 / 个人</span><h3>2024-2025 学年中山大学优秀学生二等奖学金</h3></div><span class="honor-symbol" aria-hidden="true">✳</span></article>
+          <article class="honor-item"><span class="honor-number">02</span><div class="honor-main"><span class="honor-category">学业荣誉 / 个人</span><h3>2025-2026 学年中山大学优秀学生一等奖学金</h3></div><span class="honor-symbol" aria-hidden="true">✳</span></article>
+          <article class="honor-item"><span class="honor-number">03</span><div class="honor-main"><span class="honor-category">学科竞赛 / 个人</span><h3>中山大学专项奖学金<span>（学科竞赛奖）</span></h3></div><span class="honor-symbol" aria-hidden="true">✳</span></article>
+          <article class="honor-item"><span class="honor-number">04</span><div class="honor-main"><span class="honor-category">语言竞赛 / 个人</span><h3>2025年“外研社·国才杯”“理解当代中国”全国大学生外语能力大赛英语组笔译赛项·中山大学校级决赛一等奖</h3></div><span class="honor-symbol" aria-hidden="true">✳</span></article>
+          <article class="honor-item"><span class="honor-number">05</span><div class="honor-main"><span class="honor-category">案例分析 / 团队</span><h3>第三届“岭南杯”中国经济发展案例分析大赛校级赛“优秀案例”</h3></div><span class="honor-symbol" aria-hidden="true">✳</span></article>
+          <article class="honor-item"><span class="honor-number">06</span><div class="honor-main"><span class="honor-category">商业策略 / 团队</span><h3>2026年英华营·创新创业——中山大学管理学院大湾区全球双创实训营暨第三届全球领导力项目“最佳市场潜力奖”</h3></div><span class="honor-symbol" aria-hidden="true">✳</span></article>
+          <article class="honor-item"><span class="honor-number">07</span><div class="honor-main"><span class="honor-category">项目实践 / 个人</span><h3>2026年英华营·创新创业——中山大学管理学院大湾区全球双创实训营暨第三届全球领导力项目“优秀营员奖”</h3></div><span class="honor-symbol" aria-hidden="true">✳</span></article>
+          <article class="honor-item"><span class="honor-number">08</span><div class="honor-main"><span class="honor-category">志愿服务 / 个人</span><h3>中山大学寒假招生宣传活动“优秀志愿者”</h3></div><span class="honor-symbol" aria-hidden="true">✳</span></article>
+          <article class="honor-item"><span class="honor-number">09</span><div class="honor-main"><span class="honor-category">体育竞赛 / 团队</span><h3>2024年中山大学校运会女子4×100米接力决赛第六名</h3></div><span class="honor-symbol" aria-hidden="true">✳</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="practice section-pad" id="practice" aria-labelledby="practice-title">
+      <div class="wrap">
+        <div class="section-heading practice-heading">
+          <div><p class="eyebrow section-kicker"><span>06 /</span> CAMPUS</p><h2 id="practice-title">校园<span>与实践</span></h2></div>
+        </div>
+        <div class="practice-grid">
+          <article class="practice-card">
+            <span class="practice-role">CAMPUS · VOLUNTEER</span>
+            <h3>寒假招生宣传</h3>
+            <p>担任中山大学寒假招生宣传志愿者，向高中母校及家长介绍学校与专业，获评「优秀志愿者」。</p>
+          </article>
+          <article class="practice-card">
+            <span class="practice-role">双创实训 · 领导力</span>
+            <h3>英华营·创新创业实训营</h3>
+            <p>参加管理学院大湾区全球双创实训营暨第三届全球领导力项目，参与跨学科创业实践，获「最佳市场潜力奖」与「优秀营员奖」。</p>
+          </article>
         </div>
       </div>
     </section>
 
   </main>
 
-  <footer class="site-footer"><div class="wrap footer-contact"><div><span class="mini-label">LET'S CONNECT</span><strong>从一个问题开始交流。</strong></div><a href="mailto:1479271243@qq.com">1479271243@qq.com</a></div><div class="wrap"><a class="brand" href="index.html" aria-label="返回入口">LY<span class="brand-mark">.</span></a><span>© 2026 YINGYU LV. THINK ACROSS DISCIPLINES.</span><a href="#top">返回顶部</a></div></footer>
+  <footer class="site-footer">
+    <div class="wrap footer-contact">
+      <div><span class="mini-label">LET'S CONNECT</span><strong>从一个问题开始交流。</strong></div>
+      <nav class="footer-links" aria-label="联系方式与简历下载">
+        <a href="mailto:1479271243@qq.com">1479271243@qq.com</a>
+        <a href="tel:+8617825833639">+86 178 2583 3639</a>
+        <a href="assets/resume-zh.pdf" download>中文简历</a>
+        <a href="assets/resume-en.pdf" download>English Resume</a>
+      </nav>
+    </div>
+    <div class="wrap">
+      <a class="brand" href="index.html" aria-label="返回入口">LY<span class="brand-mark">.</span></a>
+      <span>© 2026 YINGYU LV. THINK ACROSS DISCIPLINES.</span>
+      <a href="#top">返回顶部</a>
+    </div>
+  </footer>
 
   <dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-title"><button class="dialog-close" type="button" aria-label="关闭项目详情">×</button><div class="dialog-content"></div></dialog>
   <script src="main.js" defer></script>
   <script src="course-orb.js" defer></script>
+  <script src="portfolio-v2.js" defer></script>
 </body>
 </html>

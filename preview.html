@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>项目区三方案对比 · 浅色玻璃科技</title>
+<style>
+  :root{
+    --ink:#2f2a3d; --muted:#6c6678; --lilac:#7a5e9e; --violet:#6b5b9e;
+    --sky:#5f87ab; --clay:#b56a5e; --line:rgba(255,255,255,.72);
+    --glass:linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.38) 58%,rgba(226,219,240,.42));
+    --shadow:0 22px 60px rgba(80,64,102,.14), 0 5px 16px rgba(80,64,102,.06);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;color:var(--ink);font-family:Inter,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:
+      radial-gradient(ellipse 46% 36% at 82% 6%, rgba(185,166,214,.34), transparent 72%),
+      radial-gradient(ellipse 42% 34% at 8% 34%, rgba(169,196,222,.30), transparent 74%),
+      linear-gradient(150deg,#f8f6fb,#eef0f6 55%,#eef1f4);
+    -webkit-font-smoothing:antialiased;padding:0 0 120px}
+  .top{padding:54px max(24px,4vw) 10px}
+  .top .eyebrow{font-size:11px;letter-spacing:.18em;color:var(--lilac);font-weight:650}
+  .top h1{font-size:clamp(34px,5vw,60px);letter-spacing:-.05em;font-weight:620;margin:14px 0 12px;line-height:1.1}
+  .top p{max-width:720px;color:var(--muted);font-size:15px;line-height:1.85;margin:0}
+  .top .hint{display:inline-flex;gap:8px;margin-top:20px;padding:10px 16px;border:1px solid var(--line);
+    border-radius:999px;background:var(--glass);box-shadow:var(--shadow);font-size:12.5px;color:#5a5470;letter-spacing:.02em}
+  .demo{margin:54px max(24px,4vw) 0}
+  .demo-head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:6px}
+  .demo-head h2{font-size:clamp(24px,3vw,34px);letter-spacing:-.03em;font-weight:640;margin:0}
+  .demo-head .badge{font-size:10.5px;letter-spacing:.12em;font-weight:700;padding:5px 11px;border-radius:999px;
+    color:#fff;background:linear-gradient(135deg,#7a5e9e,#5f87ab)}
+  .demo-head .rec{color:#8a4b41;background:linear-gradient(135deg,#f6dfd2,#eec3b2)}
+  .demo>p.cap{color:var(--muted);font-size:13.5px;line-height:1.7;margin:6px 0 20px;max-width:760px}
+  .panel{position:relative;border:1px solid var(--line);border-radius:26px;background:var(--glass);
+    box-shadow:var(--shadow);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    overflow:hidden}
+
+  /* ---- 通用卡片 ---- */
+  .mc{position:relative;border:1px solid rgba(255,255,255,.82);border-radius:16px;background:#fff;
+    box-shadow:0 10px 26px rgba(80,64,102,.12), inset 0 1px rgba(255,255,255,.92);
+    display:flex;flex-direction:column;overflow:hidden;color:#2f2a3d}
+  .mc .mc-idx{font-size:9.5px;font-weight:700;letter-spacing:.14em;color:#7d7492;padding:14px 14px 0}
+  .mc .mc-art{flex:1;display:flex;align-items:center;justify-content:center;font-size:60px;font-weight:600;
+    letter-spacing:-.07em;color:rgba(47,42,61,.86);line-height:1;padding:8px 14px;text-shadow:0 4px 18px rgba(255,255,255,.7)}
+  .mc .mc-body{display:grid;gap:4px;padding:0 14px 15px}
+  .mc .mc-body strong{font-size:17px;font-weight:620;letter-spacing:-.02em}
+  .mc .mc-body span{font-size:11px;color:#7c7689}
+  .mc .mc-body em{font-size:10.5px;font-style:normal;color:#9a92a8;justify-self:end;margin-top:2px}
+  .mc.lilac{background:linear-gradient(150deg,#f4edf8,#dcc9e6 88%)}
+  .mc.sand {background:linear-gradient(150deg,#f9eee2,#ecccb8 88%)}
+  .mc.sky  {background:linear-gradient(150deg,#ebf3f9,#c6d9e9 88%)}
+  .mc.dark {background:linear-gradient(135deg,#2f2540,#5b4768 85%);color:#fff}
+  .mc.dark .mc-idx,.mc.dark .mc-body span,.mc.dark .mc-body em{color:rgba(255,255,255,.66)}
+  .mc.dark .mc-art{color:rgba(255,255,255,.94);text-shadow:0 6px 22px rgba(20,12,34,.5)}
+  .mc.ghost{border:1.5px dashed rgba(122,94,158,.4);background:rgba(255,255,255,.32);color:#8d83a0;box-shadow:none}
+  .mc.ghost .mc-art{color:#a79cc0;font-size:44px}
+  .ring-card .mc{height:100%;width:100%;border:none;border-radius:26px;
+    box-shadow:0 26px 60px rgba(80,64,102,.30), inset 0 1px rgba(255,255,255,.72);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+  .ring-card .mc.lilac{background:linear-gradient(150deg, rgba(255,255,255,.72), rgba(224,202,232,.44))}
+  .ring-card .mc.sand {background:linear-gradient(150deg, rgba(255,255,255,.72), rgba(240,204,184,.44))}
+  .ring-card .mc.sky  {background:linear-gradient(150deg, rgba(255,255,255,.72), rgba(200,218,233,.48))}
+  .ring-card .mc.dark {background:linear-gradient(150deg, rgba(47,37,64,.86), rgba(91,71,104,.66))}
+  .ring-card .mc.ghost{border:none;background:rgba(255,255,255,.16);box-shadow:none}
+  #masonry .mc{transform:translateZ(var(--z,0px))}
+
+  /* ---- A：3D 环绕旋转 ---- */
+  #ringStage{height:470px;perspective:1250px;background:
+    radial-gradient(circle at 50% 54%, rgba(185,166,214,.20), transparent 52%),
+    radial-gradient(ellipse at 50% 108%, rgba(122,94,158,.14), transparent 60%);}
+  #ring{position:absolute;inset:0;transform-style:preserve-3d}
+  .ring-card{position:absolute;left:50%;top:50%;width:206px;height:250px;backface-visibility:hidden;
+    will-change:transform,opacity,filter;cursor:grab}
+  .ring-card:active{cursor:grabbing}
+  #ringCore{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:999;width:150px;height:150px;
+    border-radius:50%;pointer-events:none;
+    background:radial-gradient(circle at 34% 30%, #fff, rgba(210,194,238,.55) 42%, rgba(140,160,196,.25) 72%, transparent);
+    box-shadow:0 0 70px rgba(151,120,190,.5), 0 0 0 22px rgba(255,255,255,.20), 0 0 0 44px rgba(151,120,190,.08)}
+  .orbit-ring{position:absolute;left:50%;top:50%;border-radius:50%;pointer-events:none}
+  .orbit-1{width:560px;height:560px;transform:translate(-50%,-50%);border:1px dashed rgba(122,94,158,.28)}
+  .orbit-2{width:720px;height:720px;transform:translate(-50%,-50%);border:1px solid rgba(95,135,171,.14)}
+  #ringStage .drag-hint{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);font-size:11px;
+    letter-spacing:.1em;color:#7d7492;background:rgba(255,255,255,.6);padding:6px 13px;border-radius:999px;border:1px solid var(--line)}
+
+  /* ---- B：瀑布流 + 3D 视差 ---- */
+  #masonryStage{height:auto;min-height:430px;perspective:1500px;padding:26px}
+  #masonryTilt{transform-style:preserve-3d;transition:transform .22s cubic-bezier(.2,.7,.2,1);will-change:transform}
+  #masonry{column-count:4;column-gap:16px;transform-style:preserve-3d}
+  #masonry .mc{break-inside:avoid;margin-bottom:16px;width:100%}
+  @media(max-width:820px){ #masonry{column-count:2} }
+  @media(max-width:480px){ #masonry{column-count:1} }
+
+  /* ---- C：混合 ---- */
+  .hybrid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  .hybrid .half{padding:30px}
+  .hybrid .half+.half{border-left:1px solid var(--line)}
+  .hybrid .half h3{font-size:13px;letter-spacing:.14em;font-weight:700;color:#6c6678;margin:0 0 16px}
+  .mini-ring{height:260px;perspective:900px;position:relative}
+  .mini-ring .mc{position:absolute;left:50%;top:50%;width:150px;height:190px}
+  .mini-ring .mc .mc-art{font-size:42px}
+  .mini-masonry{column-count:2;column-gap:12px}
+  .mini-masonry .mc{break-inside:avoid;margin-bottom:12px}
+  .mini-masonry .mc .mc-art{font-size:40px}
+  @media(max-width:700px){ .hybrid{grid-template-columns:1fr} .hybrid .half+.half{border-left:0;border-top:1px solid var(--line)} }
+
+  @media(prefers-reduced-motion:reduce){ *{transition:none!important;animation:none!important} }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="eyebrow">PROJECT SECTION · 3 VARIANTS · LIGHT GLASS TECH</div>
+  <h1>项目区「瀑布流 + 3D 环绕」三方案对比</h1>
+  <p>全部采用你选定的「全站浅色玻璃科技」基调。三个 demo 都可交互：<b>方案 A 按住左右拖动</b>、<b>方案 B 在卡片墙上来回移动鼠标</b>。对比后告诉我选哪一个即可。</p>
+  <span class="hint">🖱 方案 A 拖动旋转 · 方案 B 移动鼠标看视差 · 项目内容为占位示例</span>
+</div>
+
+<!-- ============ 方案 A ============ -->
+<section class="demo" id="demoA">
+  <div class="demo-head"><h2>方案 A · 3D 环绕旋转画廊（错落版）</h2><span class="badge rec">⭐ 已选定</span></div>
+  <p class="cap">卡片围成 3D 圆环，<b>高低错落 + 前后错开 + 轻微倾斜</b>；无硬边框的玻璃卡片（软阴影 + 微光）随透视前后伸缩、变暗模糊，中心是发光核心。环绕立体、错落有致，不被框框框死。</p>
+  <div class="panel">
+    <div id="ringStage">
+      <div class="orbit-ring orbit-1"></div>
+      <div class="orbit-ring orbit-2"></div>
+      <div id="ringCore"></div>
+      <div id="ring"></div>
+      <span class="drag-hint">← 按住拖动 · 松手后自动缓慢旋转 →</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 方案 B ============ -->
+<section class="demo" id="demoB">
+  <div class="demo-head"><h2>方案 B · 瀑布流 + 3D 视差</h2><span class="badge">保留瀑布流</span></div>
+  <p class="cap">卡片瀑布流错落排布（高度不一），整面卡片墙带 3D 透视；鼠标移动时整墙轻微倾斜、前后卡片产生视差，形成「悬浮立体」感。信息密度更高，一眼看到全部项目。</p>
+  <div class="panel">
+    <div id="masonryStage">
+      <div id="masonryTilt"><div id="masonry"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 方案 C ============ -->
+<section class="demo" id="demoC">
+  <div class="demo-head"><h2>方案 C · 混合（桌面环绕 / 移动瀑布）</h2><span class="badge">兼顾两端</span></div>
+  <p class="cap">桌面端用方案 A 的 3D 环绕旋转，移动端自动切换为瀑布流堆叠。两端体验都最好，但实现量略大。左侧为桌面环绕示意，右侧为移动瀑布示意。</p>
+  <div class="panel">
+    <div class="hybrid">
+      <div class="half">
+        <h3>桌面端 · 3D 环绕旋转</h3>
+        <div class="mini-ring">
+          <div class="mc lilac" style="transform:translate(-50%,-50%) rotateY(-24deg) translateZ(0)"><span class="mc-idx">01 / STRATEGY</span><span class="mc-art">01</span><div class="mc-body"><strong>明阳智能出海策略</strong><span>战略分析</span></div></div>
+          <div class="mc sky" style="transform:translate(-50%,-50%) rotateY(-10deg) translateZ(150px)"><span class="mc-idx">02 / CASE</span><span class="mc-art">02</span><div class="mc-body"><strong>致景科技案例分析</strong><span>案例分析</span></div></div>
+          <div class="mc sand" style="transform:translate(-50%,-50%) rotateY(6deg) translateZ(230px)"><span class="mc-idx">03 / RESEARCH</span><span class="mc-art">03</span><div class="mc-body"><strong>AI 与医患互动</strong><span>用户研究</span></div></div>
+          <div class="mc dark" style="transform:translate(-50%,-50%) rotateY(20deg) translateZ(150px)"><span class="mc-idx">04 / PRODUCT</span><span class="mc-art">04</span><div class="mc-body"><strong>MoodBox</strong><span>小程序 MVP</span></div></div>
+        </div>
+      </div>
+      <div class="half">
+        <h3>移动端 · 瀑布流堆叠</h3>
+        <div class="mini-masonry">
+          <div class="mc lilac"><span class="mc-idx">01 / STRATEGY</span><span class="mc-art">01</span><div class="mc-body"><strong>明阳智能出海策略</strong><span>战略分析</span></div></div>
+          <div class="mc sand"><span class="mc-idx">02 / CASE</span><span class="mc-art">02</span><div class="mc-body"><strong>致景科技案例分析</strong><span>案例分析</span></div></div>
+          <div class="mc sky"><span class="mc-idx">03 / RESEARCH</span><span class="mc-art">03</span><div class="mc-body"><strong>AI 与医患互动</strong><span>用户研究</span></div></div>
+          <div class="mc dark"><span class="mc-idx">04 / PRODUCT</span><span class="mc-art">04</span><div class="mc-body"><strong>MoodBox</strong><span>小程序 MVP</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var proj = [
+    {idx:'01', tag:'STRATEGY', title:'明阳智能出海策略', sub:'战略分析 · 商业研究', year:'2026', cls:'lilac'},
+    {idx:'02', tag:'CASE',     title:'致景科技案例分析', sub:'案例分析 · 团队负责人', year:'2025', cls:'sand'},
+    {idx:'03', tag:'RESEARCH', title:'AI 与医患互动', sub:'生成式 AI · 用户研究', year:'2025—2026', cls:'sky'},
+    {idx:'04', tag:'PRODUCT',  title:'MoodBox', sub:'产品概念 · 小程序 MVP', year:'2026', cls:'dark'}
+  ];
+  function card(p, ghost){
+    if(ghost) return '<div class="mc ghost"><span class="mc-idx">＋</span><span class="mc-art">＋</span><div class="mc-body"><strong>更多项目</strong><span>待补充</span></div></div>';
+    return '<div class="mc '+p.cls+'"><span class="mc-idx">'+p.idx+' / '+p.tag+'</span><span class="mc-art">'+p.idx+'</span><div class="mc-body"><strong>'+p.title+'</strong><span>'+p.sub+'</span><em>'+p.year+'</em></div></div>';
+  }
+
+  // ===== 方案 A：3D 环绕 =====
+  var ring = document.getElementById('ring');
+  if(ring){
+    var order = [proj[0], null, proj[1], null, proj[2], null, proj[3], null];
+    ring.innerHTML = order.map(function(p,i){ return '<div class="ring-card">'+(p?card(p):card(null,true))+'</div>'; }).join('');
+    var cards = [].slice.call(ring.querySelectorAll('.ring-card'));
+    var N = cards.length, R = 300, step = 360/N, rotY = -20;
+    var dragging = false, lastX = 0, vel = 0;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var staggerY = [0,-46,28,-18,40,-52,16,-34];
+    var staggerR = [0,40,-24,18,-30,24,-16,30];
+    var staggerT = [0,-4,3,-2,4,-3,2,-4];
+
+    function apply(){
+      cards.forEach(function(c, i){
+        var ang = rotY + i*step, rad = ang*Math.PI/180;
+        var depth = Math.cos(rad), vis = (depth+1)/2;
+        var ty = staggerY[i], r = R + staggerR[i], tz = staggerT[i];
+        c.style.transform = 'translate(-50%,-50%) translateY('+ty+'px) rotateY('+ang+'deg) translateZ('+r+'px) rotateZ('+tz+'deg)';
+        c.style.zIndex = String(Math.round(1000 + depth*100));
+        c.style.opacity = (0.3 + 0.7*vis).toFixed(2);
+        c.style.filter = 'blur('+(1-vis)*2.5+'px)';
+      });
+    }
+    var stage = document.getElementById('ringStage');
+    stage.addEventListener('pointerdown', function(e){ dragging=true; lastX=e.clientX; vel=0; stage.setPointerCapture(e.pointerId); });
+    stage.addEventListener('pointermove', function(e){ if(!dragging) return; var dx=e.clientX-lastX; lastX=e.clientX; vel=dx*0.45; rotY+=dx*0.45; apply(); });
+    var up=function(){ dragging=false; };
+    stage.addEventListener('pointerup', up);
+    stage.addEventListener('pointercancel', up);
+    function loop(){ if(!dragging && !reduced){ rotY += 0.10; apply(); } requestAnimationFrame(loop); }
+    apply(); requestAnimationFrame(loop);
+  }
+
+  // ===== 方案 B：瀑布流 + 视差 =====
+  var masonry = document.getElementById('masonry');
+  if(masonry){
+    var heights = [250, 300, 215, 285, 235, 315];
+    masonry.innerHTML = proj.map(function(p,i){
+      return '<div class="mc '+p.cls+'" style="height:'+heights[i]+'px;--z:'+((i%2? -30: 30))+'px">'+card(p).replace('<div class="mc '+p.cls+'">','')+'</div>';
+    }).join('') + '<div class="mc ghost" style="height:200px;--z:0px"><span class="mc-idx">＋</span><span class="mc-art">＋</span><div class="mc-body"><strong>更多项目</strong><span>待补充</span></div></div>';
+    var stage = document.getElementById('masonryStage');
+    var tilt = document.getElementById('masonryTilt');
+    stage.addEventListener('pointermove', function(e){
+      var r = stage.getBoundingClientRect();
+      var px = (e.clientX - r.left)/r.width - .5;
+      var py = (e.clientY - r.top)/r.height - .5;
+      tilt.style.transform = 'rotateY('+(px*9)+'deg) rotateX('+(-py*9)+'deg)';
+    });
+    stage.addEventListener('pointerleave', function(){ tilt.style.transform = 'rotateY(0deg) rotateX(0deg)'; });
+  }
+})();
+</script>
+</body>
+</html>

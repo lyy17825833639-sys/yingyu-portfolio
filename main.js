@@ -192,6 +192,22 @@ const projectDetails = {
       '结合 149 分钟、约 4.5 万字创始人访谈和多源资料，拆解 5 类数字化方案并整合成 20 页报告。',
       '案例获评“优秀案例”，收录于大赛案例册。'
     ]
+  },
+  rae: {
+    category: '05 / RESEARCH ASSIST · 2025—2026',
+    title: 'RAE 火箭计划科研助理',
+    lede: '在系统化的文献工作中，建立对创业与战略管理的知识坐标。',
+    facts: [
+      ['我的角色', '科研助理'],
+      ['研究单位', '中山大学管理学院'],
+      ['核心产出', '文献综述与阶段性研究笔记']
+    ],
+    body: '作为 RAE 火箭计划科研助理，协助团队跟踪创业与战略管理领域的前沿文献，梳理研究脉络与关键概念，形成结构化的文献综述与阶段性研究笔记，为后续选题与研究框架提供支撑。',
+    highlights: [
+      '持续跟踪创业与战略管理领域前沿文献，建立系统化的文献脉络。',
+      '整理关键概念与理论线索，产出文献综述与阶段性研究笔记。',
+      '为团队后续选题与研究框架构建提供材料支撑。'
+    ]
   }
 };
 
@@ -380,26 +396,18 @@ if (projectMap) {
         if (!target) return;
         event.preventDefault();
         setActiveNode(null);
-        const viewport = target.closest('.project-carousel-viewport');
         const motion = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
-        const revealPage = () => {
+        const reveal = () => {
           const offset = Math.max(130, (window.innerHeight - target.offsetHeight) / 2);
           window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: motion });
         };
-        if (!viewport) { revealPage(); return; }
-        const left = viewport.scrollLeft + target.getBoundingClientRect().left - viewport.getBoundingClientRect().left;
-        if (Math.abs(viewport.scrollLeft - left) < 2) { revealPage(); return; }
-        viewport.scrollTo({ left, behavior: motion });
-        if (motion === 'auto') { revealPage(); return; }
-        let finished = false;
-        const finish = () => {
-          if (finished) return;
-          finished = true;
-          viewport.removeEventListener('scrollend', finish);
-          revealPage();
-        };
-        viewport.addEventListener('scrollend', finish, { once: true });
-        window.setTimeout(finish, 450);
+        if (target.closest('.ring-card') && window.portfolioV2) {
+          window.portfolioV2.rotateTo(target.id);
+          if (motion === 'auto') { reveal(); return; }
+          window.setTimeout(reveal, 500);
+          return;
+        }
+        reveal();
       });
     });
   });

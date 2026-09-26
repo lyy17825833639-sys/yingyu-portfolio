@@ -1,0 +1,393 @@
+/* ============================================================
+   v2 增强层：打字机 · 鼠标光斑 · 计数 · 3D 环绕画廊 · 技能/实践模块 · 减留白
+   浅色玻璃科技基调，叠加在 visual-refresh.css / project-map.css 之上。
+   ============================================================ */
+
+/* ---------- 减留白：收紧纵向节奏 ---------- */
+.portfolio-page .section-pad { padding-block: clamp(74px, 7vw, 116px); }
+.portfolio-page .section-heading { margin-bottom: 46px; }
+.portfolio-page .section-heading h2 { font-size: clamp(44px, 5.6vw, 72px); }
+
+/* ---------- Hero：打字机 ---------- */
+.hero-type {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 1.5em;
+  margin: 0 0 20px;
+  font-size: clamp(18px, 1.9vw, 26px);
+  font-weight: 560;
+  letter-spacing: -.02em;
+  color: #4c385d;
+}
+.hero-type .hero-type-caret {
+  display: inline-block;
+  width: 3px;
+  height: 1.05em;
+  margin-left: 2px;
+  border-radius: 2px;
+  background: #a96151;
+  animation: caret-blink 1s steps(1) infinite;
+}
+@keyframes caret-blink { 50% { opacity: 0; } }
+
+/* ---------- Hero：鼠标跟随光斑 + 粒子 ---------- */
+.hero-cursor-glow {
+  position: absolute;
+  z-index: 0;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(151,120,190,.16), rgba(151,120,190,.05) 46%, transparent 68%);
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+.hero.has-pointer .hero-cursor-glow { opacity: 1; }
+.hero-particles { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.hero-particles i {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(113,85,120,.5);
+  box-shadow: 0 0 8px rgba(151,120,190,.5);
+  animation: particle-float 7s ease-in-out infinite;
+}
+@keyframes particle-float {
+  0%, 100% { transform: translateY(0); opacity: .15; }
+  50% { transform: translateY(-26px); opacity: .7; }
+}
+
+/* ---------- 关于我：四宫格数据 + 计数 ---------- */
+.about-stats { grid-template-columns: repeat(2, 1fr); gap: 26px 40px; }
+.about-stats strong { font-variant-numeric: tabular-nums; }
+.about-stats .count { font-variant-numeric: tabular-nums; }
+
+/* ---------- 经历速览（现在仅 2 项，收敛列数） ---------- */
+.experience-strip { grid-template-columns: minmax(150px, .72fr) repeat(2, 1fr); }
+@media (max-width: 1000px) { .experience-strip { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .experience-strip { grid-template-columns: 1fr; } }
+
+/* ---------- 技能模块 ---------- */
+.skills { background: linear-gradient(180deg, var(--site-slate), #eef0f5); }
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px 56px; }
+.skill-group {
+  position: relative;
+  padding-top: 22px;
+  border-top: 1px solid rgba(113,127,139,.28);
+}
+.skill-group h3 {
+  margin: 0 0 16px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  color: #715578;
+}
+.skill-group h3::after { content: ""; display: block; width: 26px; height: 2px; margin-top: 12px; border-radius: 2px; background: #a96151; }
+.skill-group ul { list-style: none; margin: 0; padding: 0; font-size: 14px; line-height: 2; color: #5a5468; }
+.skill-group li { display: inline; white-space: normal; }
+.skill-group li + li::before { content: " · "; color: #b9b2c4; }
+
+/* ---------- 项目：3D 环绕旋转画廊（方案A 错落版） ---------- */
+.ring-gallery { position: relative; }
+.ring-gallery-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+  color: #6a6176;
+  font-size: 11px;
+  letter-spacing: .08em;
+}
+.ring-gallery-bar i { padding: 0 4px; font-style: normal; }
+.ring-nav { display: flex; gap: 8px; }
+.ring-nav button {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 50%;
+  background: rgba(255,255,255,.66);
+  color: #4c385d;
+  font-size: 20px;
+  line-height: 1;
+  transition: background .2s ease, transform .2s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.ring-nav button:hover { background: #fff; transform: translateY(-2px); }
+
+.ring-gallery-stage {
+  position: relative;
+  height: 560px;
+  perspective: 1300px;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 50% 54%, rgba(185,166,214,.20), transparent 54%),
+    radial-gradient(ellipse at 50% 112%, rgba(122,94,158,.14), transparent 62%);
+}
+.ring-orbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+.ring-orbit-1 { width: 540px; height: 540px; border: 1px dashed rgba(122,94,158,.28); }
+.ring-orbit-2 { width: 720px; height: 720px; border: 1px solid rgba(95,135,171,.14); }
+.ring-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle at 34% 30%, #fff, rgba(210,194,238,.55) 42%, rgba(140,160,196,.25) 72%, transparent);
+  box-shadow: 0 0 70px rgba(151,120,190,.5), 0 0 0 24px rgba(255,255,255,.18), 0 0 0 48px rgba(151,120,190,.08);
+}
+.ring-track { position: absolute; inset: 0; transform-style: preserve-3d; }
+.ring-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 8;
+  padding: 7px 15px;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 999px;
+  background: rgba(255,255,255,.6);
+  color: #6a6176;
+  font-size: 11px;
+  letter-spacing: .06em;
+  pointer-events: none;
+}
+
+.ring-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 250px;
+  height: 322px;
+  backface-visibility: hidden;
+  will-change: transform, opacity, filter;
+  cursor: grab;
+}
+.ring-card:active { cursor: grabbing; }
+.ring-card-trigger {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  border-radius: 26px;
+  background: none;
+  text-align: left;
+  color: inherit;
+  overflow: hidden;
+  box-shadow: 0 26px 60px rgba(80,64,102,.3), inset 0 1px rgba(255,255,255,.72);
+  transition: box-shadow .3s ease;
+}
+.ring-card-trigger:hover { box-shadow: 0 32px 70px rgba(80,64,102,.42), inset 0 1px #fff; }
+.ring-card-trigger:focus-visible { outline: 2px solid #76578a; outline-offset: 3px; }
+.ring-card-visual {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.ring-card-visual::before, .ring-card-visual::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 51%;
+  width: 62%;
+  aspect-ratio: 1;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  opacity: .18;
+  transform: translate(-50%, -50%) rotateX(65deg);
+}
+.ring-card-visual::after { width: 84%; transform: translate(-50%, -50%) rotateY(65deg); }
+.ring-card-index {
+  position: absolute;
+  top: 16px;
+  left: 17px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  opacity: .72;
+}
+.ring-card-art {
+  position: relative;
+  font-size: 46px;
+  font-weight: 600;
+  letter-spacing: -.06em;
+  line-height: 1;
+  white-space: nowrap;
+  text-shadow: 0 8px 26px rgba(255,255,255,.65);
+  transition: transform .35s ease;
+}
+.ring-card-art i { font-size: .5em; font-style: normal; opacity: .6; margin-left: 6px; letter-spacing: .02em; }
+.ring-card-trigger:hover .ring-card-art { transform: scale(1.04); }
+.ring-card-open {
+  position: absolute;
+  right: 14px;
+  top: 13px;
+  padding: 6px 12px;
+  border-radius: 11px;
+  background: rgba(255,255,255,.72);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: .02em;
+  transition: transform .2s ease, background .2s ease;
+}
+.ring-card-trigger:hover .ring-card-open { transform: translateY(-2px); background: #fff; }
+.ring-card-body {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  gap: 4px 10px;
+  padding: 16px 18px 17px;
+  background: rgba(255,255,255,.34);
+}
+.ring-card-body strong {
+  grid-column: 1 / -1;
+  font-size: 19px;
+  font-weight: 620;
+  letter-spacing: -.03em;
+  line-height: 1.25;
+}
+.ring-card-body > span { font-size: 11.5px; opacity: .72; }
+.ring-card-body em { font-style: normal; font-size: 11px; opacity: .6; white-space: nowrap; }
+
+/* 色相（与 visual-refresh 语言一致） */
+.ring-card-strategy .ring-card-visual { color: #5f4b73; background: linear-gradient(150deg, rgba(255,255,255,.74), rgba(224,202,232,.6)); }
+.ring-card-case .ring-card-visual { color: #79483e; background: linear-gradient(150deg, rgba(255,255,255,.74), rgba(240,204,184,.6)); }
+.ring-card-research .ring-card-visual { color: #3e5f80; background: linear-gradient(150deg, rgba(255,255,255,.74), rgba(200,218,233,.62)); }
+.ring-card-moodbox .ring-card-visual { color: #fff; background: linear-gradient(135deg, rgba(48,37,64,.9), rgba(91,71,104,.74)); }
+.ring-card-moodbox .ring-card-index, .ring-card-moodbox .ring-card-art { text-shadow: 0 6px 24px rgba(20,12,34,.5); }
+.ring-card-moodbox .ring-card-art i { color: #d8dce5; opacity: .8; }
+.ring-card-moodbox .ring-card-open { background: rgba(38,25,50,.5); color: #fff; }
+.ring-card-rae .ring-card-visual { color: #4a5468; background: linear-gradient(150deg, rgba(255,255,255,.74), rgba(199,205,221,.6)); }
+
+/* ---------- 校园与实践 ---------- */
+.practice { background: linear-gradient(180deg, #eaecef, var(--site-ivory)); }
+.practice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 72px; }
+.practice-card {
+  position: relative;
+  padding-top: 22px;
+  border-top: 1px solid rgba(113,127,139,.28);
+}
+.practice-card .practice-role { font-size: 11px; font-weight: 700; letter-spacing: .14em; color: #8b607e; }
+.practice-card h3 { margin: 12px 0 12px; font-size: 24px; font-weight: 620; letter-spacing: -.03em; }
+.practice-card p { margin: 0; font-size: 14px; line-height: 1.9; color: #615c6c; }
+
+/* ---------- 荣誉分类徽标 ---------- */
+.honor-category { display: block; padding: 0; border: 0; background: none; }
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 1000px) {
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 760px) {
+  .hero-type { font-size: 17px; }
+  .about-stats { grid-template-columns: repeat(2, 1fr); gap: 18px 12px; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .practice-grid { grid-template-columns: 1fr; }
+  .ring-gallery-stage { height: 470px; border-radius: 24px; }
+  .ring-card { width: 200px; height: 260px; }
+  .ring-card-art { font-size: 36px; }
+  .ring-card-body strong { font-size: 17px; }
+  .ring-card-visual::before { width: 70%; }
+  .ring-core { width: 120px; height: 120px; }
+  .ring-orbit-1 { width: 400px; height: 400px; }
+  .ring-orbit-2 { width: 540px; height: 540px; }
+}
+@media (max-width: 480px) {
+  .hero-type { font-size: 15px; }
+  .ring-gallery-stage { height: 420px; }
+  .ring-card { width: 170px; height: 224px; }
+  .ring-card-art { font-size: 30px; }
+  .ring-card-body { padding: 13px 14px 14px; }
+  .ring-card-body strong { font-size: 15px; }
+  .ring-card-index { font-size: 9px; top: 12px; left: 13px; }
+  .ring-card-open { font-size: 10px; padding: 5px 10px; right: 10px; top: 10px; }
+  .ring-gallery-bar { font-size: 9px; flex-wrap: wrap; }
+  .practice-card { padding: 24px; }
+}
+
+/* ---------- 关于我：自我介绍为主、数据为辅 ---------- */
+.about-copy h3 { font-size: clamp(30px, 3.3vw, 46px); }
+.about-copy > p:not(.mini-label) { font-size: 18px; line-height: 1.8; color: #433c50; }
+.about-stats strong { font-size: clamp(32px, 2.9vw, 44px); }
+.about-stats .count { font-size: inherit; }
+.about-stats .stat-den { font-size: .5em; font-weight: 500; margin-left: 2px; }
+@media (max-width: 480px) {
+  .about-copy > p:not(.mini-label) { font-size: 16px; }
+  .about-stats strong { font-size: 28px; }
+}
+
+/* ---------- 标题统一单色（去除 em/span 双色） ---------- */
+.hero-title-plus,
+.section-heading h2 em,
+.section-heading h2 span,
+.journey-heading h2 span,
+.honors-heading h2 span,
+.curriculum-copy h2 em { color: inherit; }
+
+/* ---------- 经历速览：动态 ---------- */
+.experience-item {
+  position: relative;
+  padding: 6px 6px 10px 18px;
+  border-radius: 12px;
+  transition: background .3s ease;
+}
+.experience-item::before {
+  content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 3px;
+  border-radius: 3px; background: linear-gradient(180deg, #a96151, #877895);
+  transform: scaleY(.3); transform-origin: top; transition: transform .35s ease;
+}
+.experience-item:hover { background: rgba(255,255,255,.55); }
+.experience-item:hover::before { transform: scaleY(1); }
+.experience-item time { transition: color .3s ease, letter-spacing .3s ease; }
+.experience-item:hover time { color: #a96151; letter-spacing: .16em; }
+.experience-item.reveal-pending { opacity: 0; transform: translateY(14px); }
+.experience-item.is-in { opacity: 1; transform: translateY(0); transition: opacity .55s ease, transform .55s ease; }
+
+/* ---------- 3D 画廊：触控拖拽（水平交给画廊，纵向保留滚动） ---------- */
+.ring-gallery-stage { touch-action: pan-y; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-type .hero-type-caret, .hero-particles i { animation: none; }
+  .ring-card, .ring-card-trigger, .ring-card-art, .ring-card-open { transition: none; }
+  .skill-group, .practice-card { transition: none; }
+  .experience-item.reveal-pending { opacity: 1; transform: none; }
+}
+
+/* ---------- 页脚：联系方式 + 简历下载 ---------- */
+.footer-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 30px; }
+.site-footer .footer-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #b49cbb;
+  color: #5d456e;
+  font-size: clamp(14px, 1.5vw, 18px);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.site-footer .footer-links a:hover { color: #a15c57; }
